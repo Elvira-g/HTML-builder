@@ -5,7 +5,6 @@ fs.readdir(path.join(__dirname, 'secret-folder'),{withFileTypes: true}, (err, fi
     if (err)
       console.log(err);
     else {
-      console.log("\nCurrent directory filenames:");
       files.forEach(file => {
           if(!file.isDirectory()) {
             const link = path.join(__dirname, 'secret-folder', file.name)
