@@ -7,7 +7,6 @@ fs.writeFile(
     '',
     (err) => {
         if (err) throw err;
-        console.log('Файл был создан');
     }
 );
 
@@ -28,7 +27,6 @@ fs.readdir(path.join(__dirname, 'styles'), (err, files) => {
                         style,
                         err => {
                             if (err) throw err;
-                            console.log('Стили добавлены');
                         }
                     ); 
                 }
@@ -36,4 +34,4 @@ fs.readdir(path.join(__dirname, 'styles'), (err, files) => {
         });
       })
     }
-  })
+})
