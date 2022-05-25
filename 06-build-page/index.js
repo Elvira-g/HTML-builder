@@ -46,24 +46,24 @@ fs.access(path.join(__dirname, 'project-dist'), function(err) {
         });
         fs.copyFile(path.join(__dirname, 'template.html'), path.join(__dirname, 'project-dist', 'index.html'), (err) => {
           if (err) throw err;
-        })
-        fs.readFile(path.join(__dirname, 'project-dist', 'index.html'), (err,data) => {
-          if (err) throw err;
-          let index = data.toString();
-          let replacement;
-          fs.readdir(path.join(__dirname, 'components'), (err, files) => {
+          fs.readFile(path.join(__dirname, 'project-dist', 'index.html'), (err,data) => {
             if (err) throw err;
-            files.forEach(file => {
-            fs.readFile(path.join(__dirname, 'components', file), (err,rep) =>{
-                replacement = rep.toString();
-                index = index.replace(`{{${file.split('.')[0]}}}`, replacement);
-                fs.writeFile(path.join(__dirname, 'project-dist', 'index.html'), index, 'utf8', function (err) {
-                  if (err) return console.log(err);
-                });
+            let index = data.toString();
+            let replacement;
+            fs.readdir(path.join(__dirname, 'components'), (err, files) => {
+              if (err) throw err;
+              files.forEach(file => {
+              fs.readFile(path.join(__dirname, 'components', file), (err,rep) =>{
+                  replacement = rep.toString();
+                  index = index.replace(`{{${file.split('.')[0]}}}`, replacement);
+                  fs.writeFile(path.join(__dirname, 'project-dist', 'index.html'), index, 'utf8', function (err) {
+                    if (err) return console.log(err);
+                  });
+                })
               })
             })
-          })
-        });
+          });
+        })
         fs.writeFile(
           path.join(__dirname, 'project-dist', 'style.css'),
           '',
@@ -141,24 +141,24 @@ fs.access(path.join(__dirname, 'project-dist'), function(err) {
           });
           fs.copyFile(path.join(__dirname, 'template.html'), path.join(__dirname, 'project-dist', 'index.html'), (err) => {
             if (err) throw err;
-          })
-          fs.readFile(path.join(__dirname, 'project-dist', 'index.html'), (err,data) => {
-            if (err) throw err;
-            let index = data.toString();
-            let replacement;
-            fs.readdir(path.join(__dirname, 'components'), (err, files) => {
+            fs.readFile(path.join(__dirname, 'project-dist', 'index.html'), (err,data) => {
               if (err) throw err;
-              files.forEach(file => {
-              fs.readFile(path.join(__dirname, 'components', file), (err,rep) =>{
-                  replacement = rep.toString();
-                  index = index.replace(`{{${file.split('.')[0]}}}`, replacement);
-                  fs.writeFile(path.join(__dirname, 'project-dist', 'index.html'), index, 'utf8', function (err) {
-                    if (err) return console.log(err);
-                  });
+              let index = data.toString();
+              let replacement;
+              fs.readdir(path.join(__dirname, 'components'), (err, files) => {
+                if (err) throw err;
+                files.forEach(file => {
+                fs.readFile(path.join(__dirname, 'components', file), (err,rep) =>{
+                    replacement = rep.toString();
+                    index = index.replace(`{{${file.split('.')[0]}}}`, replacement);
+                    fs.writeFile(path.join(__dirname, 'project-dist', 'index.html'), index, 'utf8', function (err) {
+                      if (err) return console.log(err);
+                    });
+                  })
                 })
               })
-            })
-          });
+            });
+          })
           fs.writeFile(
             path.join(__dirname, 'project-dist', 'style.css'),
             '',
